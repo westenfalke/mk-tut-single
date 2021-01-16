@@ -19,7 +19,7 @@ endif
 XSLASH := $(FILE_SEP_CHAR)
 
 # PROJECT VARS
-PROJECT_DIR  := /home/westenfalke/GNU-Make/mk-tut-single
+PROJECT_DIR  := /tmp
 PROJECT_NAME := example
 BASE_DIR  := $(PROJECT_DIR)$(XSLASH)$(PROJECT_NAME)
 MAKE_BASE_DIR := $(BASE_DIR)$(XSLASH)workspace
