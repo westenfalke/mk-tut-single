@@ -10,10 +10,15 @@ $(BASE_DIR_S) $(CONFIG_DIR_S):
 	@[ -d $@ ] || $(MKDIR-PV) $@
 
 
+
+$(REPODIR_MK) : 
+	$(ECHO) REPO_DIR := `pwd` > $(REPODIR_MK)
+
+
+
 # create a folder $(PROJECT_NAME) in $(PROJECT_DIR) with folder structure 
 # originating fom $(BASE_DIR_S) 
-
-new_project : $(BASE_DIR_S) $(INSTALL_BASE)
+new_project : $(REPODIR_MK) $(BASE_DIR_S) $(INSTALL_BASE)
 
 new_example_project :  new_project $(INSTALL_EXAMPLE)
 
