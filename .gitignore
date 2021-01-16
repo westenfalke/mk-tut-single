@@ -1,4 +1,5 @@
 .gitignore
+.repodir.mk
 */**/Makefile
 */**/makefile
 **/*.mk
