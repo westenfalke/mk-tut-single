@@ -16,24 +16,7 @@ endif
 
 XSLASH := $(FILE_SEP_CHAR)
 
-# PROJECT VARS
-PROJECT_DIR  := $(PWD)
-PROJECT_NAME := example
-BASE_DIR  := $(PROJECT_DIR)$(XSLASH)$(PROJECT_NAME)
-MAKE_BASE_DIR := $(BASE_DIR)$(XSLASH)workspace
-TEMPLATE_DIR := $(BASE_DIR)$(XSLASH)templates
-LOCK_DIR := $(MAKE_BASE_DIR)$(XSLASH)loc
-LOCK_DIR_INTERNAL := $(LOCK_DIR)$(XSLASH)internal
-INSTALL_BASE := $(LOCK_DIR_INTERNAL)$(XSLASH)base-installed
-STATIC_CONTENT_DIR := $(BASE_DIR)$(XSLASH)static
-INSTALL_EXAMPLE := $(LOCK_DIR_INTERNAL)$(XSLASH)example-installed
-PUBLIC_DIST_DIR := $(BASE_DIR)$(XSLASH)public
-BUILD_DIR := $(BASE_DIR)$(XSLASH)build
-STATIC_CONTENT_DEFAULT := README.md
-EXAMPLE_ARCHIVE := .example.tgz
-BASE_ARCHIVE := .base.tgz
 
-BASE_DIR_S := $(MAKE_BASE_DIR) $(LOCK_DIR) $(LOCK_DIR_INTERNAL) $(TEMPLATE_DIR) $(STATIC_CONTENT_DIR) $(PUBLIC_DIST_DIR) $(BUILD_DIR)
 
 
 # CMD MACROS    
@@ -68,6 +51,7 @@ RM-RI                              := $(RM) -ri
 RM-RF                              := $(RM) -rf
 RM-RFV                             := $(RM) -rfv
 TAR                                := /usr/bin/tar
+TAR-CVZF                           := /usr/bin/tar -cfzf
 TAR-XVZF                           := $(TAR) -xvzf
 TAR--SKIP-OLD-FILES-XVZF           := $(TAR) --skip-old-files -xvzf
 TEE                                := /usr/bin/tee
@@ -95,3 +79,23 @@ BASH-PROMPT-EMPTY                  := @$(ECHO) '\# _'
 SHELL-START                        := @$(ECHO) '```shell'
 VIM-START                          := @$(ECHO) '```vim'
 BASH-START                         := @$(ECHO) '```bash'
+
+
+# PROJECT VARS
+PROJECT_DIR  := /home/westenfalke/GNU-Make/mk-tut-single
+PROJECT_NAME := pro
+BASE_DIR  := $(PROJECT_DIR)$(XSLASH)$(PROJECT_NAME)
+MAKE_BASE_DIR := $(BASE_DIR)$(XSLASH)workspace
+TEMPLATE_DIR := $(BASE_DIR)$(XSLASH)templates
+LOCK_DIR := $(MAKE_BASE_DIR)$(XSLASH)loc
+LOCK_DIR_INTERNAL := $(LOCK_DIR)$(XSLASH)internal
+INSTALL_BASE := $(LOCK_DIR_INTERNAL)$(XSLASH)base-installed
+STATIC_CONTENT_DIR := $(BASE_DIR)$(XSLASH)static
+INSTALL_EXAMPLE := $(LOCK_DIR_INTERNAL)$(XSLASH)example-installed
+PUBLIC_DIST_DIR := $(BASE_DIR)$(XSLASH)public
+BUILD_DIR := $(BASE_DIR)$(XSLASH)build
+STATIC_CONTENT_DEFAULT := README.md
+EXAMPLE_ARCHIVE := .example.tgz
+BASE_ARCHIVE := .base.tgz
+
+BASE_DIR_S := $(MAKE_BASE_DIR) $(LOCK_DIR) $(LOCK_DIR_INTERNAL) $(TEMPLATE_DIR) $(STATIC_CONTENT_DIR) $(PUBLIC_DIST_DIR) $(BUILD_DIR)
