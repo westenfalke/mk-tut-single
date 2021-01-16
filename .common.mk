@@ -1,6 +1,4 @@
 # PLATFORM DEPENDET FILE VAR
-#include .platform-file-vars.mk 
-# PLATFORM DEPENDET FILE VAR
 # COMSPEC is defined only on Windows.
 ifdef COMSPEC
 	FILE_SEP := \
@@ -19,7 +17,7 @@ endif
 XSLASH := $(FILE_SEP_CHAR)
 
 # PROJECT VARS
-PROJECT_DIR  := /tmp
+PROJECT_DIR  := $(PWD)
 PROJECT_NAME := example
 BASE_DIR  := $(PROJECT_DIR)$(XSLASH)$(PROJECT_NAME)
 MAKE_BASE_DIR := $(BASE_DIR)$(XSLASH)workspace
