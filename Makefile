@@ -30,6 +30,12 @@ $(INSTALL_BASE) :
 	@$(TAR--SKIP-OLD-FILES-XVZF)$(BASE_ARCHIVE) -C $(BASE_DIR)
 	$(TOUCH) $@
 
+create_tgz	: $(BASE_DIR)
+	$(TAR) -C $(BASE_DIR) -cvzf .example.tgz  workspace/static-example.mk workspace/Makefile
+#	$(TAR) -C $(BASE_DIR) -cvzf .base.tgz     templates static 
+	$(TAR) -C $(BASE_DIR) -cvzf .base.tgz     templates/static.mk static/README.md 
+	
+
 # deprives $(BUILD_DIR) noisily from all build stuff
 clean: 
 	$(RM-RFV) RM-RFV$(XSLASH)*
