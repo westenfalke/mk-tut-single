@@ -1,3 +1,4 @@
+REPODIR_MK := .repodir.mk
 # PLATFORM DEPENDET FILE VAR
 # COMSPEC is defined only on Windows.
 ifdef COMSPEC
@@ -15,8 +16,6 @@ else
 endif
 
 XSLASH := $(FILE_SEP_CHAR)
-
-
 
 
 # CMD MACROS    
@@ -82,7 +81,7 @@ BASH-START                         := @$(ECHO) '```bash'
 
 
 # PROJECT VARS
-REPO_DIR  := /home/westenfalke/GNU-Make/mk-tut-single
+REPO_DIR  ?= .
 PROJECT_NAME := pro
 BASE_DIR  := $(REPO_DIR)$(XSLASH)$(PROJECT_NAME)
 MAKE_BASE_DIR := $(BASE_DIR)$(XSLASH)workspace
