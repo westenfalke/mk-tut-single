@@ -25,7 +25,8 @@ CAT                                := /usr/bin/cat
 CP                                 := /usr/bin/cp
 CP--VERBOSE                        := $(CP) --verbose
 CP--VERBOSE--RECURSIVE             := $(CP) --verbose --recursive
-CP-VR--BACKUP_SIMPLE_sN 		   := $(CP) --verbose --recursive --backup=simple  --suffix=.`/usr/bin/date +%s%N` 
+CP-V--BACKUP_SIMPLE_sN 		       := $(CP) --verbose             --backup=simple --suffix=.`/usr/bin/date +%s%N` 
+CP-VR--BACKUP_SIMPLE_sN 		   := $(CP) --verbose --recursive --backup=simple --suffix=.`/usr/bin/date +%s%N` 
 DATE--ISO-8601_NANOSEC             := /usr/bin/date --iso-8601=ns
 DATE--ISO-8601_SEC                 := /usr/bin/date --iso-8601=second
 ECHO                               := /usr/bin/echo
@@ -82,8 +83,9 @@ BASH-START                         := @$(ECHO) '```bash'
 
 # PROJECT VARS
 REPO_DIR  ?= .
-PROJECT_NAME := pro
-BASE_DIR  := $(REPO_DIR)$(XSLASH)$(PROJECT_NAME)
+PRO_DIR  ?= .
+PROJECT_NAME ?= pro
+BASE_DIR  := $(PRO_DIR)$(XSLASH)$(PROJECT_NAME)
 MAKE_BASE_DIR := $(BASE_DIR)$(XSLASH)workspace
 TEMPLATE_DIR := $(BASE_DIR)$(XSLASH)templates
 LOCK_DIR := $(MAKE_BASE_DIR)$(XSLASH)loc
@@ -101,5 +103,7 @@ BASE_EXAMPLE_DIR := $(REPO_DIR)$(XSLASH)$(BASE_EXAMPLE_NAME)
 CONFIG_DIR_S := $(BASE_CONFIG_DIR) $(BASE_EXAMPLE_DIR)
 BASE_CONFIG_ARCHIVE := $(REPO_DIR)$(XSLASH)$(BASE_CONFIG_NAME).tgz
 EXAMPLE_ARCHIVE := $(REPO_DIR)$(XSLASH)$(BASE_EXAMPLE_NAME).tgz
+
+PRO_CONFIG_FILE := $(BASE_DIR)$(XSLASH).common.mk 
 
 BASE_DIR_S := $(MAKE_BASE_DIR) $(LOCK_DIR) $(LOCK_DIR_INTERNAL) $(TEMPLATE_DIR) $(STATIC_CONTENT_DIR) $(PUBLIC_DIST_DIR) $(BUILD_DIR)

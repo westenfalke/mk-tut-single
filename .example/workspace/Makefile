@@ -1,4 +1,4 @@
-include ../../.common.mk
+include ../.common.mk
 
 MK_STEP := 0
 CONTENT := static-example
