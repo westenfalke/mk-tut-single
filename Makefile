@@ -9,9 +9,6 @@ all :
 $(BASE_DIR) $(BASE_DIR_S) $(CONFIG_DIR_S): 
 	@[ -d $@ ] || $(MKDIR-PV) $@
 
-$(REPODIR_MK) : 
-	$(ECHO) REPO_DIR := `pwd` > $(REPODIR_MK)
-
 $(PRO_CONFIG_FILE): $(BASE_DIR) .common.mk 
 	$(ECHO) PROJECT_NAME := $(PROJECT_NAME) > $(BASE_DIR)$(XSLASH).common.mk
 	$(ECHO) PRO_DIR      := $(PRO_DIR)     >> $(BASE_DIR)$(XSLASH).common.mk
@@ -19,7 +16,7 @@ $(PRO_CONFIG_FILE): $(BASE_DIR) .common.mk
 
 # create a folder $(PROJECT_NAME) in $(PROJECT_DIR) with folder structure 
 # originating fom $(BASE_DIR_S) 
-new_project : $(REPODIR_MK) $(PRO_CONFIG_FILE) $(BASE_DIR_S) $(INSTALL_BASE)
+new_project : $(PRO_CONFIG_FILE) $(BASE_DIR_S) $(INSTALL_BASE)
 	$(ECHO) MAKEFILE_LIST = $(MAKEFILE_LIST)
 
 new_example_project :  new_project $(INSTALL_EXAMPLE)
