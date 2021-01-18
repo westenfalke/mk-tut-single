@@ -12,19 +12,31 @@ all :
 $(BASE_DIR) $(BASE_DIR_S) $(CONFIG_DIR_S): 
 	@[ -d $@ ] || $(MKDIR-PV) $@
 
-$(PRO_CONFIG_FILE): $(BASE_DIR)
+$(PROJECT_CONFIG_FILE): $(BASE_DIR)
 	$(ECHO) '# PRO VARS'                     > $(BASE_DIR)$(XSLASH).common.mk
 	$(ECHO) PROJECT_NAME := $(PROJECT_NAME) >> $(BASE_DIR)$(XSLASH).common.mk
-	$(ECHO) PRO_DIR      := $(PRO_DIR)      >> $(BASE_DIR)$(XSLASH).common.mk
+	$(ECHO) PROJECT_DIR  := $(PROJECT_DIR)      >> $(BASE_DIR)$(XSLASH).common.mk
 	$(CAT) $(REPO_DIR)$(XSLASH).platform.mk >> $(BASE_DIR)$(XSLASH).common.mk
 	$(CAT) $(REPO_DIR)$(XSLASH).project.mk  >> $(BASE_DIR)$(XSLASH).common.mk
 	$(CAT) $(REPO_DIR)$(XSLASH).cmd.mk      >> $(BASE_DIR)$(XSLASH).common.mk
 
 # create a folder $(PROJECT_NAME) in $(PROJECT_DIR) with folder structure 
 # originating fom $(BASE_DIR_S) 
-new_project : $(BASE_DIR_S) $(PRO_CONFIG_FILE) $(INSTALL_BASE)
+new_project : $(BASE_DIR_S) $(PROJECT_CONFIG_FILE) $(INSTALL_BASE)
 
 new_example_project :  new_project $(INSTALL_EXAMPLE)
+
+install_poc :
+	$(MAKE)  PROJECT_DIR=/tmp PROJECT_NAME=POC new_example_project
+
+trash_project :
+	$(RM-RI) $(BASE_DIR)
+
+uninstall_poc :
+	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) trash_project
+
+
+
 
 $(INSTALL_EXAMPLE) : 
 	@$(ECHO) unpacking \'$(EXAMPLE_ARCHIVE)\' into \'$(BASE_DIR)\'
