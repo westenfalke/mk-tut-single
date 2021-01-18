@@ -60,7 +60,9 @@ import_tgz	: $(BASE_DIR) $(CONFIG_DIR_S)
 import_tgz_from_poc :
 	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) import_tgz
 
-
 # deprives $(BUILD_DIR) noisily from all build stuff
 clean: 
-	$(RM-RFV) RM-RFV$(XSLASH)*
+	$(RM-RFV) $(BUILD_DIR)/* 
+
+clean_poc :
+	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) clean
