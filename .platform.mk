@@ -1,0 +1,18 @@
+# PLATFORM DEPENDET FILE VAR
+
+# COMSPEC is defined only on Windows.
+ifdef COMSPEC
+	FILE_SEP := \
+	FILE_SEP_CHAR := \
+	FILE_PATH_SEP := ;
+	FILE_PATH_SEP_CHAR := ;
+	FILE_EXE_EXT  := .exe
+else
+	FILE_SEP := /
+	FILE_SEP_CHAR := /
+	FILE_PATH_SEP := :
+	FILE_PATH_SEP_CHAR := :
+	FILE_EXE_EXT  :=
+endif
+
+XSLASH := $(FILE_SEP_CHAR)
