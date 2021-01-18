@@ -26,16 +26,9 @@ new_project : $(BASE_DIR_S) $(PROJECT_CONFIG_FILE) $(INSTALL_BASE)
 
 new_example_project :  new_project $(INSTALL_EXAMPLE)
 
-install_poc :
-	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) new_example_project
-
 trash_project :
 	$(RM-RI) $(BASE_DIR)$(XSLASH)*
 	$(RM-RI) $(PROJECT_CONFIG_FILE)
-
-uninstall_poc :
-	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) trash_project
-
 
 $(INSTALL_EXAMPLE) : 
 	@$(ECHO) unpacking \'$(EXAMPLE_ARCHIVE)\' into \'$(BASE_DIR)\'
@@ -57,12 +50,6 @@ import_tgz	: $(BASE_DIR) $(CONFIG_DIR_S)
 	$(RM-RFV) $(BASE_CONFIG_DIR)/*
 	$(TAR-XVZF) $(BASE_CONFIG_ARCHIVE) -C $(BASE_CONFIG_DIR)
 
-import_tgz_from_poc :
-	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) import_tgz
-
 # deprives $(BUILD_DIR) noisily from all build stuff
 clean: 
 	$(RM-RFV) $(BUILD_DIR)/* 
-
-clean_poc :
-	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) clean

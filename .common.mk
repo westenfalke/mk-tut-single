@@ -1,9 +1,7 @@
 # default PRO VARS (sould to be overwritten vi cli parameter)
 
 DEFAULT_PROJECT_DIR := /tmp
-DEFAULT_PROJECT_NAME := pro
-DEFAULT_POC_DIR := /tmp
-DEFAULT_POC_NAME := POC
+DEFAULT_PROJECT_NAME := POC
 
 ifdef PROJECT_DIR
 $(info  PROJECT_DIR="$(PROJECT_DIR)")
@@ -20,8 +18,6 @@ $(info Missing parameter: PROJECT_NAME="$(PROJECT_NAME)")
 PROJECT_NAME := $(DEFAULT_PROJECT_NAME)
 $(info  Defaul value is PROJECT_NAME="$(PROJECT_NAME)")
 endif
-
-
 
 # REPO VARS
 REPO_DIR  ?= .
