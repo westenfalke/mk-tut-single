@@ -27,7 +27,7 @@ new_project : $(BASE_DIR_S) $(PROJECT_CONFIG_FILE) $(INSTALL_BASE)
 new_example_project :  new_project $(INSTALL_EXAMPLE)
 
 install_poc :
-	$(MAKE)  PROJECT_DIR=$(XSLASH)tmp PROJECT_NAME=POC new_example_project
+	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) new_example_project
 
 trash_project :
 	$(RM-RI) $(BASE_DIR)$(XSLASH)*
@@ -35,8 +35,6 @@ trash_project :
 
 uninstall_poc :
 	$(MAKE) PROJECT_DIR=$(DEFAULT_POC_DIR) PROJECT_NAME=$(DEFAULT_POC_NAME) trash_project
-
-
 
 
 $(INSTALL_EXAMPLE) : 
