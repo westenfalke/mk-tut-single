@@ -13,12 +13,13 @@ $(BASE_DIR) $(BASE_DIR_S) $(CONFIG_DIR_S):
 	@[ -d $@ ] || $(MKDIR-PV) $@
 
 $(PROJECT_CONFIG_FILE): $(BASE_DIR)
-	$(ECHO) '# PRO VARS'                     > $(BASE_DIR)$(XSLASH).common.mk
-	$(ECHO) PROJECT_NAME := $(PROJECT_NAME) >> $(BASE_DIR)$(XSLASH).common.mk
-	$(ECHO) PROJECT_DIR  := $(PROJECT_DIR)  >> $(BASE_DIR)$(XSLASH).common.mk
-	$(CAT) $(REPO_DIR)$(XSLASH).platform.mk >> $(BASE_DIR)$(XSLASH).common.mk
-	$(CAT) $(REPO_DIR)$(XSLASH).project.mk  >> $(BASE_DIR)$(XSLASH).common.mk
-	$(CAT) $(REPO_DIR)$(XSLASH).cmd.mk      >> $(BASE_DIR)$(XSLASH).common.mk
+	$(ECHO) '# PROJECT VARS'                                 > $(BASE_DIR)$(XSLASH).common.mk
+	$(ECHO) PROJECT_DISPLAY_NAME := $(PROJECT_DISPLAY_NAME) >> $(BASE_DIR)$(XSLASH).common.mk
+	$(ECHO) PROJECT_NAME         := $(PROJECT_NAME)         >> $(BASE_DIR)$(XSLASH).common.mk
+	$(ECHO) PROJECT_DIR          := $(PROJECT_DIR)          >> $(BASE_DIR)$(XSLASH).common.mk
+	$(CAT) $(REPO_DIR)$(XSLASH).platform.mk                 >> $(BASE_DIR)$(XSLASH).common.mk
+	$(CAT) $(REPO_DIR)$(XSLASH).project.mk                  >> $(BASE_DIR)$(XSLASH).common.mk
+	$(CAT) $(REPO_DIR)$(XSLASH).cmd.mk                      >> $(BASE_DIR)$(XSLASH).common.mk
 
 # create a folder $(PROJECT_NAME) in $(PROJECT_DIR) with folder structure 
 # originating fom $(BASE_DIR_S) 
