@@ -47,6 +47,7 @@ TRUNCATE                           := /usr/bin/truncate
 TRUNCATE--SIZE_ZERO                := $(TRUNCATE) --size=0
 TRUNCATE--NO-CREATE                := $(TRUNCATE) --no-create
 TRUNCATE--SIZE_ZERO--NO-CREATE     := $(TRUNCATE--SIZE_ZERO) --no-create
+XARGS                              := /usr/bin/xargs
 # SHELL FORMAT MACROS to optimize   output for markdown
 BASH-END                           := @$(ECHO) '```'
 VIM-END                            := @$(ECHO) '```'

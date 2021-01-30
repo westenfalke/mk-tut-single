@@ -1,12 +1,10 @@
 include ../.common.mk
 
 MK_STEP := 0
-CONTENT := static-example
+CONTENT := dynamic-example.mk static-example.mk
 
 all : 
 	$(ECHO) $(CONTENT)
+	$(ECHO-N) $(CONTENT) | $(XARGS) -d ' ' -n1 -I{} $(MAKE) --makefile={}
 
-$(CONTENT) :
-	$(MAKE) --makefile=$@.mk
-
-.DEFAULT_GOAL := $(CONTENT)
+.DEFAULT_GOAL := all

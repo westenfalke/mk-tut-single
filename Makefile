@@ -44,10 +44,10 @@ $(INSTALL_BASE) :
 	$(TOUCH) $@
 
 import_tgz	: $(BASE_DIR) $(CONFIG_DIR_S)
-	$(TAR) -C $(BASE_DIR) -cvzf $(EXAMPLE_ARCHIVE) workspace/static-example.mk workspace/Makefile
+	$(TAR) -C $(BASE_DIR) -cvzf $(EXAMPLE_ARCHIVE) workspace/static-example.mk workspace/dynamic-example.mk workspace/Makefile
 	$(RM-RFV) $(BASE_EXAMPLE_DIR)/*
 	$(TAR-XVZF) $(EXAMPLE_ARCHIVE) -C $(BASE_EXAMPLE_DIR)
-	$(TAR) -C $(BASE_DIR) -cvzf $(BASE_CONFIG_ARCHIVE)    templates/static.mk static/README.md 
+	$(TAR) -C $(BASE_DIR) -cvzf $(BASE_CONFIG_ARCHIVE)    templates/static.mk templates/dynamic.mk static/README.md 
 	$(RM-RFV) $(BASE_CONFIG_DIR)/*
 	$(TAR-XVZF) $(BASE_CONFIG_ARCHIVE) -C $(BASE_CONFIG_DIR)
 
